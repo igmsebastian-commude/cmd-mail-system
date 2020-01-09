@@ -16,7 +16,10 @@ class CompaniesImport implements ToCollection, WithHeadingRow
     {
         $companies = $collection->each(function ($item) {
             Mail::to($item['email'])
-                ->cc($moreUsers)
+                ->cc([
+                    'marketing@commude.ph',
+                    'management@commude.ph',
+                ])
                 ->bcc($moreUsers)
                 ->queue(new OrderShipped($order));
         });
