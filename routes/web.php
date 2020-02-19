@@ -19,3 +19,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
 Route::post('/import', 'HomeController@import')->middleware('auth')->name('import');
+
+Route::get('/mail', function () {
+    $company['name'] = 'ALCOSHOP';
+    return view('mails.rawpartner')->with(compact('company'));
+})->middleware('auth');

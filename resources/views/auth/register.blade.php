@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -68,16 +68,33 @@
                                 {{-- <input id="position" type="text" class="form-control @error('position') is-invalid @enderror" name="position" value="{{ old('position') }}" required autocomplete="position"> --}}
                                 <select name="position" class="custom-select">
                                     <option selected disabled>Open this select menu</option>
-                                    <option value="Systems Director">Systems Director</option>
+                                    <option value="Systems App Director">Systems Director</option>
                                     <option value="Web Director">Web Director</option>
-                                    <option value="Systems Associate Manager" selected>Systems Associate Manager</option>
+                                    <option value="Systems App Associate Manager" selected>Systems Associate Manager</option>
                                     <option value="Web Associate Manager">Web Associate Manager</option>
-                                    <option value="Systems Manager">Systems Manager</option>
-                                    <option value="Systems Manager">Web Manager</option>
+                                    <option value="Systems App Manager">Systems Manager</option>
+                                    <option value="Web Manager">Web Manager</option>
+                                    <option value="Sales Representative">Sales Representative</option>
+                                    <option value="Sales Manager">Sales Manager</option>
                                     <option value="CTO">CTO</option>
+                                    <option value="COO">COO</option>
                                 </select>
 
                                 @error('position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="file" type="file" class="form-control @error('file') is-invalid @enderror" name="file" accept="image/*" autofocus>
+
+                                @error('file')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

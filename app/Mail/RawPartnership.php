@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Storage;
 
-class PartnershipOffer extends Mailable
+class RawPartnership extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,6 +33,6 @@ class PartnershipOffer extends Mailable
     public function build()
     {
         $company = $this->company->toArray();
-        return $this->attach(Storage::disk('attachments')->get('company_profile_commude_2019.pdf'))->subject('Business Partnership Proposal From Commude Philippines')->view('mails.partner')->with(compact('company'));
+        return $this->subject('Business Partnership Proposal From Commude Philippines, Inc.')->view('mails.rawpartner')->with(compact('company'));
     }
 }
